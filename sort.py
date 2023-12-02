@@ -48,13 +48,15 @@ def get_lyric_score(path):
         if len(positive_words) > 0:
             positive_words = [item for sublist in positive_words for item in sublist]
             positive_words = [word for word in positive_words if "-" not in word]
-            positive_words_str = ",".join(positive_words)
-        negative_words_str = ""
+            positive_words = list(set(positive_words))
+            positive_words_str = ", ".join(positive_words)
 
+        negative_words_str = ""
         if len(negative_words) > 0:
             negative_words = [item for sublist in negative_words for item in sublist]
             negative_words = [word for word in negative_words if "-" not in word]
-            negative_words_str = ",".join(negative_words)
+            negative_words = list(set(negative_words))
+            negative_words_str = ", ".join(negative_words)
 
         return total_score, positive_words_str, negative_words_str
 
