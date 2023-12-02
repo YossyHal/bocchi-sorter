@@ -19,4 +19,5 @@ sudo apt install mecab libmecab-dev mecab-ipadic-utf8
 python -m pip install oseti
 python -m pip install requests
 python -m pip install lxml
+python -m pip install pandas
 ```
