@@ -1,4 +1,14 @@
 import oseti
 
+with open('text/青春コンプレックス.txt', 'r') as f:
+    lyric = f.read()
+    print(lyric)
+
 analyzer = oseti.Analyzer()
-analyzer.analyze_detail("お金も希望もない！")
+results  = analyzer.analyze(lyric)
+print(results)
+
+total_score = 0
+for result in results:
+    total_score += result
+print(total_score)

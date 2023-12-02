@@ -2,16 +2,20 @@
 
 ```sh
 # 1. 仮想環境を作成
-py -3.10 -m venv .venv
+pyenv install 3.10.13
+pyenv local   3.10.13
+python -m venv .venv
 
 # 2. 仮想環境をアクティベート
-.venv\Scripts\activate.ps1
+source .venv/bin/activate
 
 # 3. pipを最新版に更新
 python -m pip install --upgrade pip setuptools
 
-# 4. ライブラリをインストール
-pip install -r requirements.txt
+# 4. mecabをインストール
+sudo apt install mecab libmecab-dev mecab-ipadic-utf8
+
+# 5. ライブラリをインストール
 python -m pip install oseti
 python -m pip install requests
 python -m pip install lxml
