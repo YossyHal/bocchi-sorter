@@ -1,4 +1,4 @@
-## venv
+## 環境構築
 
 ```sh
 # 1. 仮想環境を作成
@@ -21,3 +21,8 @@ python -m pip install requests
 python -m pip install lxml
 python -m pip install pandas
 ```
+
+## 使い方
+
+1. `python download_lyric.py` で歌詞をダウンロード
+2. `python sort.py` でネガポジのスコア順に曲をソート

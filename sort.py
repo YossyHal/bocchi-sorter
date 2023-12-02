@@ -1,3 +1,5 @@
+"""ネガポジのスコアが低い順に曲をソートする
+"""
 from pathlib import Path
 
 import oseti
@@ -19,6 +21,7 @@ def main():
             ignore_index=True,
         )
     df = df.sort_values("score")
+    df["score"] = df["score"].round(1)
     df.index = range(1, len(df) + 1)
     print(df)
     df.to_csv("result.csv", encoding="sjis", errors="ignore")
@@ -36,9 +39,9 @@ def get_lyric_score(path):
         for result in results:
             score = result["score"]
             total_score += score
-            if score == 1.0:
+            if score > 0.5:
                 positive_words.append(result["positive"])
-            elif score == -1.0:
+            elif score < -0.5:
                 negative_words.append(result["negative"])
 
         positive_words_str = ""
@@ -52,6 +55,7 @@ def get_lyric_score(path):
             negative_words = [item for sublist in negative_words for item in sublist]
             negative_words = [word for word in negative_words if "-" not in word]
             negative_words_str = ",".join(negative_words)
+
         return total_score, positive_words_str, negative_words_str
 
 
